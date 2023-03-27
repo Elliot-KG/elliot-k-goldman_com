@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .linecap-round{
+    stroke-linecap: round;
+  }
+
+  .linecap-butt{
+    stroke-linecap: butt;
+  }
+
+  .sky-old{
+    background: rgb(3,3,47);
+    background: linear-gradient(0deg, rgba(3,3,47,1) 10%, rgba(9,9,121,1) 35%, rgba(255,61,0,1) 100%);
+  }
+
+  .sky{
+    background: rgb(3,3,47);
+    background: linear-gradient(0deg, rgba(3,3,47,1) 0%, rgba(255,61,0,1) 28%, rgba(9,9,121,1) 100%);   
+  }
+}

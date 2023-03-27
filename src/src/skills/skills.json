@@ -1,0 +1,54 @@
+{
+    "Adobe": {
+        "name": "Adobe",
+        "image": "adobe"
+    },
+    "Figma": {
+        "name": "Figma",
+        "image": "figma"
+    },
+    "Gatsby": {
+        "name": "Gatsby",
+        "image": "gatsby"
+    },
+    "Javascript": {
+        "name": "Javascript",
+        "image": "javascript"
+    },
+    "Next": {
+        "name": "Next.js",
+        "image": "next"
+    },
+    "Python": {
+        "name": "Python",
+        "image": "python"
+    },
+    "React": {
+        "name": "React.js",
+        "image": "react"
+    },
+    "Swift": {
+        "name": "Swift",
+        "image": "swift"
+    },
+    "Tailwind": {
+        "name": "Tailwind.css",
+        "image": "tailwind"
+    },
+    "Three": {
+        "name": "Three.js",
+        "image": "three"
+    },
+    "Typescript": {
+        "name": "Typescript",
+        "image": "typescript"
+    },
+    "UIUX":{
+        "name": "UI/UX",
+        "image": "ui"
+    },
+    "Vue": {
+        "name": "Vue",
+        "image": "vue"
+    }
+}

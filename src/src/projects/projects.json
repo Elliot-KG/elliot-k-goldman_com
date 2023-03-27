@@ -1,0 +1,91 @@
+[
+    {
+        "id": 0,
+        "name": "Portfolio",
+        "image": "",
+        "description": "The site you're on right now!",
+        "skills": [
+            "Adobe",
+            "Gatsby",
+            "React",
+            "Tailwind",
+            "Typescript"
+        ],
+        "link": "",
+        "solo": true,
+        "github": "https://github.com/Elliot-KG/portfolio"
+    },
+    {
+        "id": 1,
+        "name": "Illumitex",
+        "image": "illumitex",
+        "description": "The front-end for an award-winning agricultural tech product for monitoring indoor greenhouses",
+        "skills": [
+            "UIUX",
+            "Adobe",
+            "Figma",
+            "Vue",
+            "Javascript"
+        ],
+        "link": "https://elliotkg.com/illumitex",
+        "solo": false,
+        "github": null
+    },
+    {
+        "id": 2,
+        "name": "Illumitex - Mobile",
+        "image": "illumitexMobile",
+        "description": "An iOS app for interfacing notes with Illumitex's web dashboard",
+        "skills": [
+            "UIUX",
+            "Adobe",
+            "Figma",
+            "Swift"
+        ],
+        "link": "https://elliotkg.com/illumitex-mobile",
+        "solo": false,
+        "github": null
+    },
+    {
+        "id": 3,
+        "name": "FizzBuzz",
+        "image": "fizzBuzz",
+        "description": "A self-directed programming and design challenge to make an iOS game in 24 hours",
+        "skills": [
+            "UIUX",
+            "Adobe",
+            "Swift"
+        ],
+        "link": "https://elliotkg.com/fizzbuzz",
+        "solo": true,
+        "github": null
+    },
+    {
+        "id": 4,
+        "name": "Gather",
+        "image": "gather",
+        "description": "The front-end for an iOS app to help visualize groups of people",
+        "skills": [
+            "UIUX",
+            "Adobe",
+            "Swift"
+        ],
+        "link": null,
+        "solo": false,
+        "github": null
+    },
+    {
+        "id": 5,
+        "name": "Illustration / Motion Graphics",
+        "image": "notifications",
+        "description": "Illustration and motion-graphics work",
+        "skills": [
+            "UIUX",
+            "Adobe",
+            "Figma"
+        ],
+        "link": "https://elliotkg.com",
+        "solo": true,
+        "github": null
+    }
+]
