@@ -30,7 +30,7 @@ const images : Record<string, string | StaticImageData>  = {
     illumitex, illumitexMobile, fizzBuzz, gather, notifications
 }
 
-export default function nameToImage(name : string) : string {
+export default function nameToImage(name : string) : string | StaticImageData {
 
     if(name == "") return ""
 
