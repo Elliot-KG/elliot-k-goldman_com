@@ -1,6 +1,6 @@
 import * as React from "react"
 import Image from 'next/image'
-import nameToImage from "../src/nameToImage";
+import { nameToImage } from "../src/nameToImage";
 import ProjectType from "../src/projects/project.interface";
 import { Github } from "./projectIcons/github";
 import { Link } from "./projectIcons/link";
@@ -27,7 +27,7 @@ export function Project({project, selected, click, hover} : {project : ProjectTy
         e.stopPropagation()
         click(e, project)
       }} onMouseEnter={(()=>hover(project, false))} onMouseOut={(()=>hover(project, true))} >
-        <Image className="min-w-full min-h-full object-cover shrink-0" src={nameToImage(project.image)} alt={project.name} />
+        <Image className="min-w-full min-h-full object-cover shrink-0" src={project.image != ""? nameToImage(project.image) : ""} alt={project.name} />
       </div>
       {/* Project (normally) hidden info */}
       <div className={`overflow-hidden transition-all duration-400 ease-in-out text-white ${(project == selected)? "" : "opacity-0 h-0"}`}>

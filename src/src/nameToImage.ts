@@ -19,22 +19,31 @@ import illumitexMobile from  "../images/illumitex-mobile.gif"
 import fizzBuzz from  "../images/FizzBuzz.gif"
 import gather from "../images/Gather.gif"
 import notifications from "../images/Notifications.gif"
-
 import { StaticImageData } from "next/image"
 
-const images : Record<string, string | StaticImageData>  = {
+const svgs : Record<string, string>  = {
     adobe, figma, gatsby, javascript, 
     next, python, react, swift, tailwind, three, 
-    typescript, ui, vue,
+    typescript, ui, vue
+}
 
+const images : Record<string, StaticImageData> = {
     illumitex, illumitexMobile, fizzBuzz, gather, notifications
 }
 
-export default function nameToImage(name : string) : string | StaticImageData {
+export function nameToSvg(name : string) : string {
 
     if(name == "") return ""
 
-    if (!images.hasOwnProperty(name)){
+    if (!svgs.hasOwnProperty(name)){
+        throw new Error(`Called for a name that doesn't have an svg: ${name}`);
+    }
+    return svgs[name]
+}
+
+export function nameToImage(name : string) : StaticImageData {
+
+    if (name == "" || !images.hasOwnProperty(name)){
         throw new Error(`Called for a name that doesn't have an image: ${name}`);
     }
     return images[name]
