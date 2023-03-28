@@ -1,5 +1,5 @@
-import { Vector } from "p5"
-import p5 from "p5"
+//import { Vector } from "p5"
+//import p5 from "p5"
 
 export class FlowField{
     readonly field : Array<Array<Vector>>

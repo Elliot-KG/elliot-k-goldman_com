@@ -1,4 +1,4 @@
-import p5 from "p5"
+import { randomInt } from "./random"
 
 export interface pathObject{
     command : String
@@ -8,7 +8,7 @@ export interface pathObject{
 export interface svgObject extends Array<pathObject>{}
 
 function wiggle(randAmount : number):number{
-    return p5.prototype.random(-randAmount, randAmount)
+    return randomInt(-randAmount, randAmount)
 }
 
 {/* Modifying */}

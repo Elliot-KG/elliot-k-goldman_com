@@ -20,4 +20,18 @@
     background: rgb(3,3,47);
     background: linear-gradient(0deg, rgba(3,3,47,1) 0%, rgba(255,61,0,1) 28%, rgba(9,9,121,1) 100%);   
   }
+
+  .shimmer {
+  color: grey;
+  display:inline-block;
+  -webkit-mask:linear-gradient(-60deg,#ffffff 20%,#8888,#ffffff 80%) right/300% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 2s infinite;
+  font-size: 50px;
+  max-width:200px;
+  }
+
+  @keyframes shimmer {
+    100% {-webkit-mask-position:left}
+  }
 }

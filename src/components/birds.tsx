@@ -3,10 +3,9 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-
-import { Vector } from "p5"
+//import { Vector } from "p5"
 import * as React from "react"
-import { Bird } from "../src/birds/bird"
+import Victor from "victor"
 import { Flock } from "../src/birds/flock"
 import { FlowField } from "../src/birds/flowField"
 
@@ -21,8 +20,8 @@ export function Birds() {
     let timeStart = 0;
     //TODO: Flock size should depend on screen size
     let flock = new Flock(100)
-    let target = new Vector(width, height/2)
-    let field = new FlowField(width, height)
+    let target = new Victor(width, height/2)
+    //let field = new FlowField(width, height)
 
     React.useEffect(()=>{
         if(canvasRef != null){
@@ -43,7 +42,7 @@ export function Birds() {
         canvasRef.current!.height = height
         window.addEventListener("resize", resize, false);
         //target = new Vector(width, height/2)
-        field = new FlowField(width, height)
+        //field = new FlowField(width, height)
       };
       resize()
       

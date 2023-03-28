@@ -1,4 +1,5 @@
 import * as React from "react"
+import Image from 'next/image'
 import nameToImage from "../src/nameToImage";
 import ProjectType from "../src/projects/project.interface";
 import { Github } from "./projectIcons/github";
@@ -15,21 +16,21 @@ export function Project({project, selected, click, hover} : {project : ProjectTy
   if(project.github){
     github = (
       <span className={`transtion-all delay-200 duration-300 ${(project == selected)? "" : "scale-y-0 opacity-0"}`}>
-        <Github />
+        <Github link={project.github} />
       </span>
     )
   }
   
   return (
-    <div className={`inline-block m-10 w-48 rounded-lg ${(selected == project)? ring : ""}`}>
+    <div className={`select-none inline-block m-10 w-48 rounded-lg ${(selected == project)? ring : ""}`}>
       <div className={`cursor-pointer z-20 rounded-lg h-48 flex justify-center items-center overflow-hidden ${(project.image == "")? "bg-slate-200" : ""}`} onClick={(e)=>{
         e.stopPropagation()
         click(e, project)
       }} onMouseEnter={(()=>hover(project, false))} onMouseOut={(()=>hover(project, true))} >
-        <img className="min-w-full min-h-full object-cover shrink-0" src={nameToImage(project.image)} alt={project.name} />
+        <Image className="min-w-full min-h-full object-cover shrink-0" src={nameToImage(project.image)} alt={project.name} />
       </div>
       {/* Project (normally) hidden info */}
-      <div className={`transition-all duration-400 ease-in-out text-white ${(project == selected)? "" : "opacity-0 h-0"}`}>
+      <div className={`overflow-hidden transition-all duration-400 ease-in-out text-white ${(project == selected)? "" : "opacity-0 h-0"}`}>
         {/* Project info icon bar */}
         <div className={`flex justify-around my-4`}>
             <span className={`transtion-all duration-300 ${(project == selected)? "" : "scale-y-0 opacity-0"}`}>

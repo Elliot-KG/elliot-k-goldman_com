@@ -1,4 +1,5 @@
 import * as React from "react"
+import Image from 'next/image'
 import { SkillType } from "../src/skills/skill.interface"
 import nameToImage from "../src/nameToImage";
 
@@ -9,7 +10,7 @@ export function Skill({ showText, activated, skill }: { showText: boolean, activ
   return (
     <div className="flex">
       <div onMouseEnter={() => { setHovering(true) }} onMouseOut={() => { setHovering(false) }} className={`${(activated ? "" : "saturate-0")} w-8 h-8 rounded-md flex justify-center`}>
-        <img src={nameToImage(skill.image)} alt={skill.name} />
+        <Image src={nameToImage(skill.image)} alt={skill.name} />
       </div>
       <div className={`bg-night rounded-full flex justify-center items-center px-2 invisible sm:visible text-sm text-white ml-2 transition-opacity ease-in-out duration-400 ${((showText && activated) || hovering) ? "opacity-100" : "opacity-0"}`}>
         {skill.name}
