@@ -3,7 +3,6 @@
 
 import { randomInt } from "../random"
 import Victor from "victor"
-import { FlowField } from "./flowField"
 
 
 //modifying
@@ -21,9 +20,6 @@ function limit(vec : Victor, max : number) {
     }
     return vec;
 }
-
-
-
 
 export class Bird {
 
@@ -104,10 +100,6 @@ export class Bird {
 
     }
 
-    // field(field: FlowField) {
-    //     this.acceleration = field.lookup(this.location)
-    // }
-
     update() {
         this.velocity.add(this.acceleration)
         limit(this.velocity, this.maxSpeed)
@@ -115,7 +107,7 @@ export class Bird {
         this.acceleration.multiplyScalar(0)
     }
 
-    //For now
+    //TODO: For now
     borders() {
         //TEMP VALUES
         let width = 1400
