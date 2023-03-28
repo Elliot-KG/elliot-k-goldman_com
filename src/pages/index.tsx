@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title>Elliot K. Goldman</title>
         <meta name="description" content="The portfolio site of Elliot K. Goldman" />
-        <link rel="icon" href="/public/favicon.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <main className="font-main font-black bg-night animate-sky w-full h-full">
         <MountainRange />
