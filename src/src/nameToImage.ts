@@ -20,7 +20,9 @@ import fizzBuzz from  "../images/FizzBuzz.gif"
 import gather from "../images/Gather.gif"
 import notifications from "../images/Notifications.gif"
 
-const images : Record<string, string>  = {
+import { StaticImageData } from "next/image"
+
+const images : Record<string, string | StaticImageData>  = {
     adobe, figma, gatsby, javascript, 
     next, python, react, swift, tailwind, three, 
     typescript, ui, vue,
