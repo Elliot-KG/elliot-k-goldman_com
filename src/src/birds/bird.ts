@@ -2,30 +2,15 @@
 //https://natureofcode.com/book/chapter-6-autonomous-agents/
 
 import { randomInt } from "../random"
-import Victor from "victor"
+import Vector from "./vector"
 
 
-//modifying
-function magSq(vec : Victor) {
-    const x = vec.x;
-    const y = vec.y;
-    return x * x + y * y;
-}
-//modifying
-function limit(vec : Victor, max : number) {
-    const mSq = magSq(vec);
-    if (mSq > max * max) {
-      vec.divideScalar(Math.sqrt(mSq)) //normalize it
-      vec.multiplyScalar(max);
-    }
-    return vec;
-}
 
 export class Bird {
 
-    location: Victor
-    velocity: Victor
-    acceleration: Victor
+    location: Vector
+    velocity: Vector
+    acceleration: Vector
     maxSpeed: number
     maxForce: number
     scale: number
@@ -37,9 +22,9 @@ export class Bird {
     readonly RAND_AMOUNT = 1 // * 2 for negative and positive
 
     constructor() {
-        this.location = new Victor(200, 200)
-        this.velocity = new Victor(randomInt(-1, 1), randomInt(-1, 1))
-        this.acceleration = new Victor(0, 0)
+        this.location = new Vector(200, 200)
+        this.velocity = new Vector(randomInt(-1, 1), randomInt(-1, 1))
+        this.acceleration = new Vector(0, 0)
         this.scale = randomInt(3,4)
         this.maxSpeed = 3
         this.maxForce = 0.05
@@ -71,129 +56,133 @@ export class Bird {
         }
     }
 
-    applyForce(force: Victor) {
+    applyForce(force: Vector) {
         this.acceleration.add(force)
     }
 
     flock(birds: Array<Bird>) {
-        let sep = this.seperate(birds)   // Separation
-        let ali = this.align(birds)      // Alignment
-        let coh = this.cohesion(birds)   // Cohesion
+        let sep = this.seperate(birds);   // Separation
+        let ali = this.align(birds);      // Alignment
+        let coh = this.cohesion(birds);   // Cohesion
         // Arbitrarily weight these forces
-        sep.multiplyScalar(1.5)
-        ali.multiplyScalar(1.0)
-        coh.multiplyScalar(1.0)
-        // Add the force Victors to acceleration
-        this.applyForce(sep)
-        this.applyForce(ali)
-        this.applyForce(coh)
+        sep.mult(1.5);
+        ali.mult(1.0);
+        coh.mult(1.0);
+        // Add the force vectors to acceleration
+        this.applyForce(sep);
+        this.applyForce(ali);
+        this.applyForce(coh);
     }
 
-    seek(target: Victor) {
-        let desired = target.subtract(this.location)
+    seek(target: Vector) {
+        let desired = Vector.sub(target, this.location)
         desired.normalize()
-        desired.multiplyScalar(this.maxSpeed)
+        desired.mult(this.maxSpeed)
 
-        let steer = desired.subtract(this.velocity)
-        limit(steer, this.maxForce)  // Limit to maximum steering force
-        return steer
+        let steer = Vector.sub(desired, this.velocity);
+        steer.limit(this.maxForce);  // Limit to maximum steering force
+        return steer;
 
     }
+
+    // field(field: FlowField) {
+    //     this.acceleration = field.lookup(this.location)
+    // }
 
     update() {
         this.velocity.add(this.acceleration)
-        limit(this.velocity, this.maxSpeed)
+        this.velocity.limit(this.maxSpeed)
         this.location.add(this.velocity)
-        this.acceleration.multiplyScalar(0)
+        this.acceleration.mult(0)
     }
 
-    //TODO: For now
+    //For now
     borders() {
         //TEMP VALUES
         let width = 1400
         let height = 600
 
 
-        if (this.location.x < -this.scale) this.location.x = width + this.scale
-        if (this.location.y < -this.scale) this.location.y = height + this.scale
-        if (this.location.x > width + this.scale) this.location.x = -this.scale
-        if (this.location.y > height + this.scale) this.location.y = -this.scale
+        if (this.location.x < -this.scale) this.location.x = width + this.scale;
+        if (this.location.y < -this.scale) this.location.y = height + this.scale;
+        if (this.location.x > width + this.scale) this.location.x = -this.scale;
+        if (this.location.y > height + this.scale) this.location.y = -this.scale;
     }
 
     seperate(birds: Array<Bird>) {
         let desiredseparation = 25.0
-        let steer = new Victor(0, 0)
+        let steer = new Vector(0, 0)
         let count = 0
         // For every boid in the system, check if it's too close
         for (let i = 0; i < birds.length; i++) {
-            let d = this.location.distance(birds[i].location)
+            let d = Vector.dist(this.location, birds[i].location);
             // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
             if ((d > 0) && (d < desiredseparation)) {
-                // Calculate Victor pointing away from neighbor
-                let diff = this.location.subtract(birds[i].location)
-                diff.normalize()
-                diff.divideScalar(d)        // Weight by distance
-                steer.add(diff)
-                count++            // Keep track of how many
+                // Calculate vector pointing away from neighbor
+                let diff = Vector.sub(this.location, birds[i].location);
+                diff.normalize();
+                diff.div(d);        // Weight by distance
+                steer.add(diff);
+                count++;            // Keep track of how many
             }
         }
         // Average -- divide by how many
         if (count > 0) {
-            steer.divideScalar(count)
+            steer.div(count);
         }
 
-        // As long as the Victor is greater than 0
-        if (steer.length() > 0) {
+        // As long as the vector is greater than 0
+        if (steer.mag() > 0) {
             // Implement Reynolds: Steering = Desired - Velocity
-            steer.normalize()
-            steer.multiplyScalar(this.maxSpeed)
-            steer.subtract(this.velocity)
-            limit(steer, this.maxForce)
+            steer.normalize();
+            steer.mult(this.maxSpeed);
+            steer.sub(this.velocity);
+            steer.limit(this.maxForce);
         }
-        return steer
+        return steer;
     }
 
     align(birds: Array<Bird>) {
         let neighbordist = 50
-        let sum = new Victor(0, 0)
+        let sum = new Vector(0, 0)
         let count = 0
         for (let i = 0; i < birds.length; i++) {
-            let d = this.location.distance(birds[i].location)
+            let d = Vector.dist(this.location, birds[i].location)
             if ((d > 0) && (d < neighbordist)) {
                 sum.add(birds[i].velocity)
                 count++
             }
         }
         if (count > 0) {
-            sum.divideScalar(count)
+            sum.div(count)
             sum.normalize()
-            sum.multiplyScalar(this.maxSpeed)
-            let steer = sum.subtract(this.velocity)
-            limit(steer, this.maxForce)
+            sum.mult(this.maxSpeed)
+            let steer = Vector.sub(sum, this.velocity)
+            steer.limit(this.maxForce)
             return steer
         } else {
-            return new Victor(0, 0)
+            return new Vector(0, 0)
         }
     }
 
     // Cohesion
-    // For the average location (i.e. center) of all nearby birds, calculate steering Victor towards that location
+    // For the average location (i.e. center) of all nearby birds, calculate steering vector towards that location
     cohesion(birds: Array<Bird>) {
         let neighbordist = 50
-        let sum = new Victor(0, 0)   // Start with empty Victor to accumulate all locations
+        let sum = new Vector(0, 0)   // Start with empty vector to accumulate all locations
         let count = 0
         for (let i = 0; i < birds.length; i++) {
-            let d = this.location.distance(birds[i].location)
+            let d = Vector.dist(this.location, birds[i].location);
             if ((d > 0) && (d < neighbordist)) {
-                sum.add(birds[i].location) // Add location
-                count++
+                sum.add(birds[i].location); // Add location
+                count++;
             }
         }
         if (count > 0) {
-            sum.divideScalar(count)
+            sum.div(count);
             return this.seek(sum) // Steer towards the location
         } else {
-            return new Victor(0, 0)
+            return new Vector(0, 0)
         }
     }
 

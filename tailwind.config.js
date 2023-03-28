@@ -13,7 +13,6 @@ module.exports = {
       fontFamily: {
         'main' : ['Raleway']
       },
-      //TODO: Sun needs better method of where to stop
       keyframes: {
         sun: {
           '100%': { 

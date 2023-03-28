@@ -8,8 +8,6 @@ import LinkedIn from "../images/LinkedIn.png"
 import Mail from "../images/Mail.png"
 
 export function Footer() {
-
-    //TODO: ABOUT/Contact
     return (
         <footer>
             <div className="flex justify-center items-center">

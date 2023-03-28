@@ -11,7 +11,6 @@ export const Mountains = () => {
 	const xGridDim = 18
 	const yGridDim = 4
 	const randAmount = 20
-	const randAmountPad = randAmount + 10 // The amount to confirm the front mountains will cover the back
 	const smallRandAmount = 4
 	const widthO = width - (2 * padding)
 	const heightO = height - (2 * padding)
