@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image"
+
 //SVGS for skills
 import adobe from "../images/icons/adobe.svg"
 import figma from "../images/icons/figma.svg"
@@ -14,12 +16,11 @@ import ui from "../images/icons/ui.svg"
 import vue from "../images/icons/vue.svg"
 
 //Images for projects
-import illumitex from "../images/illumitex.gif"
-import illumitexMobile from  "../images/illumitex-mobile.gif"
+import illumitex from "../images/Illumitex.gif"
+import illumitexMobile from  "../images/Illumitex-mobile.gif"
 import fizzBuzz from  "../images/FizzBuzz.gif"
 import gather from "../images/Gather.gif"
 import notifications from "../images/Notifications.gif"
-import { StaticImageData } from "next/image"
 
 const svgs : Record<string, string>  = {
     adobe, figma, gatsby, javascript, 
