@@ -1,21 +1,37 @@
 //Heavily inspired from:
 //https://natureofcode.com/book/chapter-6-autonomous-agents/
 
-// import { P5CanvasInstance, ReactP5Wrapper, Victor } from "react-p5-wrapper"
-// import P5, { Victor } from "p5"
 import { randomInt } from "../random"
 import Victor from "victor"
 import { FlowField } from "./flowField"
 
 
-function limit(vec : Victor, max : number) {
-    const mSq = Math.pow(vec.length(), 2);
+//modifying
+function limit1(vec : Victor, max : number) {
+    const mSq = Math.sqrt(vec.length())
     if (mSq > max * max) {
         vec.divideScalar(Math.sqrt(mSq)) //normalize it
-        vec.multiplyScalar(max);
+        vec.multiplyScalar(max)
     }
     return vec;
   }
+
+function magSq(vec : Victor) {
+    const x = vec.x;
+    const y = vec.y;
+    return x * x + y * y;
+}
+
+function limit(vec : Victor, max : number) {
+    const mSq = magSq(vec);
+    if (mSq > max * max) {
+      vec.divideScalar(Math.sqrt(mSq)) //normalize it
+      vec.multiplyScalar(max);
+    }
+    return vec;
+}
+
+
 
 
 export class Bird {
@@ -92,7 +108,6 @@ export class Bird {
         desired.multiplyScalar(this.maxSpeed)
 
         let steer = desired.subtract(this.velocity)
-        if(steer.length() > this.maxForce) steer.
         limit(steer, this.maxForce)  // Limit to maximum steering force
         return steer
 
