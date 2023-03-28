@@ -1,6 +1,5 @@
 import * as React from "react"
 import ProjectsJson from "../src/projects/projects.json"
-import { ThreeDProjects } from "./3dProjects";
 import { Project } from "./project"
 import ProjectType from "../src/projects/project.interface"
 import { SkillsBar } from "./skillsBar";
@@ -30,9 +29,6 @@ export function Projects() {
                 {ProjectsJson.map((project : ProjectType)=>(
                     <Project key={project.id} project={project} selected={selected} click={projectSelected}  hover={projectHover}/>
                 ))}
-            </div>
-            <div className="absolute top-0 w-full h-full">
-                {/* <ThreeDProjects/> */}
             </div>
         </div>
   );
