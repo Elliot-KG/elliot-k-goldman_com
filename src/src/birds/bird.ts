@@ -7,21 +7,12 @@ import { FlowField } from "./flowField"
 
 
 //modifying
-function limit1(vec : Victor, max : number) {
-    const mSq = Math.sqrt(vec.length())
-    if (mSq > max * max) {
-        vec.divideScalar(Math.sqrt(mSq)) //normalize it
-        vec.multiplyScalar(max)
-    }
-    return vec;
-  }
-
 function magSq(vec : Victor) {
     const x = vec.x;
     const y = vec.y;
     return x * x + y * y;
 }
-
+//modifying
 function limit(vec : Victor, max : number) {
     const mSq = magSq(vec);
     if (mSq > max * max) {
