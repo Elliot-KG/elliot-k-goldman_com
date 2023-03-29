@@ -3,7 +3,7 @@ import * as React from "react"
 export function Sun() {
     return (
         // Box around sun
-        <div className="z-30 w-full h-full animate-sun absolute px-[12%] flex justify-end items-center">
+        <div className="z-30 w-full h-full animate-sun absolute px-[12%] flex justify-start items-center">
             {/* Sun*/}
             <div className="w-1/4">
                 <svg className="relative linecap-round stroke-white stroke-[20px] fill-none origin-center animate-spin-slow" width="100%" viewBox="0 0 1000 1000" >

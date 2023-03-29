@@ -14,17 +14,8 @@ module.exports = {
         'main' : ['Raleway']
       },
       keyframes: {
-        sun: {
-          '100%': { 
-            transform: 'translate(0px, 0px) rotate(360deg)'
-          },
-          '50%':{
-            transform: 'translate(200px, 500px) rotate(180deg) '
-          }
-        },
-
         fade:{
-          '0%, 100%':{
+          '0%, 25%, 100%':{
             opacity: 1
           },
           '50%':{
@@ -32,20 +23,28 @@ module.exports = {
           }
         },
 
-        test:{
-          '100%':{
-            'background-color' : 'red'
+        sun:{
+          '0%': { 
+            transform: 'rotate(90deg)'
+          },
+          '25%':{
+            transform: 'rotate(180deg)'
           },
           '50%':{
-            'background-color' : 'green'
+            transform: 'rotate(270deg)'
+          },
+          '75%':{
+            transform: 'rotate(360deg)'
+          },
+          '100%':{
+            transform: 'rotate(450deg)'
           }
         }
       },
       animation: {
         'spin-slow' : 'spin 12s linear infinite',
-        'sun' : 'spin 16s linear infinite',
-        'fade' : 'fade 12s linear infinite',
-        'test' : 'test 8s linear infinite'
+        'sun' : 'sun 16s linear infinite',
+        'fade' : 'fade 16s linear infinite',
       }
     }
   },

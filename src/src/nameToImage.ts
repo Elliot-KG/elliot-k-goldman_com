@@ -16,11 +16,12 @@ import ui from "../images/icons/ui.svg"
 import vue from "../images/icons/vue.svg"
 
 //Images for projects
-import illumitex from "../images/Illumitex.gif"
-import illumitexMobile from  "../images/Illumitex-mobile.gif"
 import fizzBuzz from  "../images/FizzBuzz.gif"
 import gather from "../images/Gather.gif"
+import illumitex from "../images/Illumitex.gif"
+import illumitexMobile from  "../images/Illumitex-mobile.gif"
 import notifications from "../images/Notifications.gif"
+import portfolio from "../images/Portfolio.gif"
 
 const svgs : Record<string, string>  = {
     adobe, figma, gatsby, javascript, 
@@ -29,7 +30,7 @@ const svgs : Record<string, string>  = {
 }
 
 const images : Record<string, StaticImageData> = {
-    illumitex, illumitexMobile, fizzBuzz, gather, notifications
+    fizzBuzz, gather, illumitex, illumitexMobile, notifications, portfolio
 }
 
 export function nameToSvg(name : string) : string {
