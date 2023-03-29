@@ -1,7 +1,10 @@
 import * as React from "react"
 import Image from 'next/image'
 import { SkillType } from "../src/skills/skill.interface"
-import { nameToImage, nameToSvg } from "../src/nameToImage";
+import { nameToSvg } from "../src/nameToImage";
+import { Josefin_Sans } from "next/font/google"
+
+const Josefin = Josefin_Sans({subsets:['latin']})
 
 export function Skill({ showText, activated, skill }: { showText: boolean, activated: boolean, skill: SkillType }) {
 
@@ -12,7 +15,7 @@ export function Skill({ showText, activated, skill }: { showText: boolean, activ
       <div onMouseEnter={() => { setHovering(true) }} onMouseOut={() => { setHovering(false) }} className={`${(activated ? "" : "saturate-0")} w-8 h-8 rounded-md flex justify-center`}>
         <Image src={nameToSvg(skill.image)} alt={skill.name} />
       </div>
-      <div className={`bg-night rounded-full flex justify-center items-center px-2 invisible sm:visible text-sm text-white ml-2 transition-opacity ease-in-out duration-400 ${((showText && activated) || hovering) ? "opacity-100" : "opacity-0"}`}>
+      <div className={`${Josefin.className} bg-night font-light rounded-full flex justify-center items-center px-2 invisible sm:visible text-sm text-white ml-2 transition-opacity ease-in-out duration-400 ${((showText && activated) || hovering) ? "opacity-100" : "opacity-0"}`}>
         {skill.name}
 
         {/* <svg className="stroke-white" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" x="0px" y="0px" viewBox="0 0 75 75">

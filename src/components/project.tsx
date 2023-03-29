@@ -5,7 +5,9 @@ import ProjectType from "../src/projects/project.interface";
 import { Github } from "./projectIcons/github";
 import { Link } from "./projectIcons/link";
 import { SoloTeam } from "./projectIcons/soloTeam";
+import { Josefin_Sans } from "next/font/google"
 
+const Josefin = Josefin_Sans({subsets:['latin']})
 
 export function Project({project, selected, click, hover} : {project : ProjectType, selected : ProjectType | null, click :(e : React.MouseEvent, project : ProjectType)=>void,   hover: (project : ProjectType, mouseOut : boolean)=>void}){
   
@@ -22,7 +24,7 @@ export function Project({project, selected, click, hover} : {project : ProjectTy
   }
   
   return (
-    <div className={`select-none inline-block m-10 w-48 rounded-lg ${(selected == project)? ring : ""}`}>
+    <div className={`${Josefin.className} select-none inline-block m-10 w-48 rounded-lg ${(selected == project)? ring : ""}`}>
       <div className={`cursor-pointer z-20 rounded-lg h-48 flex justify-center items-center overflow-hidden ${(project.image == "")? "bg-slate-200" : ""}`} onClick={(e)=>{
         e.stopPropagation()
         click(e, project)
@@ -43,8 +45,8 @@ export function Project({project, selected, click, hover} : {project : ProjectTy
 
             {github}
         </div>
-        <h2 className="text-sm">{project.name}</h2>
-        <h3>{project.description}</h3>
+        <h2 className="text-sm font-bold">{project.name}</h2>
+        <h3 className="font-light">{project.description}</h3>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import Mail from "../images/Mail.png"
 
 export function Footer() {
     return (
-        <footer>
+        <footer className="mt-20">
             <div className="flex justify-center items-center">
                 <div className="relative">
                     <a className="invisible sm:visible absolute w-[100px] right-[92px] top-[228px] hover:shimmer" href="https://littledetailsclub.com/" target="_blank">
