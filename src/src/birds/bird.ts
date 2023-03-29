@@ -3,7 +3,7 @@
 
 import { randomInt } from "../random"
 import Vector from "./vector"
-
+import BirdConstants from "./bird_values"
 
 
 export class Bird {
@@ -25,7 +25,7 @@ export class Bird {
         this.location = new Vector(200, 200)
         this.velocity = new Vector(randomInt(-1, 1), randomInt(-1, 1))
         this.acceleration = new Vector(0, 0)
-        this.scale = randomInt(3,4)
+        this.scale = randomInt(2,3)
         this.maxSpeed = 3
         this.maxForce = 0.05
         this.wingsClosed = false
@@ -33,11 +33,15 @@ export class Bird {
         this.wingCount = randomInt(0, this.wingCountTo)
     }
 
-    run(context: CanvasRenderingContext2D, birds: Array<Bird>) {
+    setScale(scale : number){
+        this.scale = randomInt(scale, scale+1)
+    }
+
+    run(context: CanvasRenderingContext2D, birds: Array<Bird>, width : number, height : number) {
         this.flock(birds)
         this.update()
-        this.borders()
-        this.draw(context)
+        this.borders(width, height)
+        this.draw(context, width, height)
         this.flap()
     }
 
@@ -85,10 +89,6 @@ export class Bird {
 
     }
 
-    // field(field: FlowField) {
-    //     this.acceleration = field.lookup(this.location)
-    // }
-
     update() {
         this.velocity.add(this.acceleration)
         this.velocity.limit(this.maxSpeed)
@@ -97,12 +97,7 @@ export class Bird {
     }
 
     //For now
-    borders() {
-        //TEMP VALUES
-        let width = 1400
-        let height = 600
-
-
+    borders(width : number, height : number) {
         if (this.location.x < -this.scale) this.location.x = width + this.scale;
         if (this.location.y < -this.scale) this.location.y = height + this.scale;
         if (this.location.x > width + this.scale) this.location.x = -this.scale;
@@ -189,12 +184,16 @@ export class Bird {
 
 
 
-    draw(context: CanvasRenderingContext2D) {
-
+    draw(context: CanvasRenderingContext2D, width : number, height : number) {
         //Draw wings with random "rotation"
         context.strokeStyle = "white"
         context.beginPath()
         context.moveTo(this.location.x, this.location.y)
+        if(width < BirdConstants.SMALL_WIDTH){
+            this.setScale(BirdConstants.SMALL_SCALE)
+        }else{
+            this.setScale(BirdConstants.LARGE_SCALE)
+        }
 
         if (!this.wingsClosed) {
             let rx = this.location.x + this.scale//let rx = this.location.x + this.scale + randInt((-1 * this.RAND_AMOUNT), this.RAND_AMOUNT)

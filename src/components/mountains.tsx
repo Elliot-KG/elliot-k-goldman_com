@@ -69,7 +69,7 @@ export const Mountains = () => {
 	}
 
 	return (
-		<div className="mt-60">
+		<div className="mt-20 sm:mt-60">
 			<svg className="absolute linecap-round stroke-white fill-none stroke-[10px]" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 				viewBox={"0 0 " + width + " " + height}>
 

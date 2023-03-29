@@ -8,8 +8,6 @@ export function SkillsBar({highlighted} : {highlighted : Array<string>}) {
   let noneSelected = (highlighted.length == 0)
   const skillsDictionary = SkillsJson as SkillDictionaryType
 
-  //TODO: Add click to highlight project with that skill
-
   return (
     <div className="z-20 inline-block sticky top-1/4 h-0">
         <div className="left-2 relative top-[-100%] flex flex-col">

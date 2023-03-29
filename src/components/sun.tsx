@@ -1,9 +1,5 @@
 import * as React from "react"
 
-
-//TODO: The color should rise with the sun
-
-
 export function Sun() {
     return (
         // Box around sun

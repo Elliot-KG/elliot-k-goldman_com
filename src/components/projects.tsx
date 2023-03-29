@@ -6,8 +6,6 @@ import { SkillsBar } from "./skillsBar";
 
 export function Projects() {
 
-    //TODO: Click out of projects
-
     const [highlighted, setHighlighted] = React.useState(Array<string>)
     const [selected, setSelected] = React.useState<ProjectType | null>(null)
 

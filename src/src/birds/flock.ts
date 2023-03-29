@@ -12,9 +12,9 @@ export class Flock{
         }
     }
 
-    run(context: CanvasRenderingContext2D){
+    run(context: CanvasRenderingContext2D, width : number, height : number){
         this.flock.forEach((bird : Bird)=>{
-            bird.run(context, this.flock)
+            bird.run(context, this.flock, width, height)
         })
     }
 }
