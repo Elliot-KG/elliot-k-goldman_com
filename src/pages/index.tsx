@@ -7,6 +7,8 @@ import { Josefin_Sans } from "next/font/google"
 
 const Josefin = Josefin_Sans({subsets:['latin']})
 
+//TODO: Weird issue on mobile with white bar
+
 export default function Home() {
   return (
   <StrictMode>

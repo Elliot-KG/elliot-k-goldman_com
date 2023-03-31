@@ -24,8 +24,8 @@ export function Project({project, selected, click, hover} : {project : ProjectTy
   }
   
   return (
-    <div className={`${Josefin.className} select-none inline-block m-10 w-48 rounded-lg ${(selected == project)? ring : ""}`}>
-      <div className={`cursor-pointer z-20 rounded-lg h-48 flex justify-center items-center overflow-hidden ${(project.image == "")? "bg-slate-200" : ""}`} onClick={(e)=>{
+    <div className={`${Josefin.className} select-none inline-block m-10 w-60 rounded-lg ${(selected == project)? ring : ""}`}>
+      <div className={`cursor-pointer z-20 rounded-lg h-60 flex justify-center items-center overflow-hidden ${(project.image == "")? "bg-slate-200" : ""}`} onClick={(e)=>{
         e.stopPropagation()
         click(e, project)
       }} onMouseEnter={(()=>hover(project, false))} onMouseOut={(()=>hover(project, true))} >

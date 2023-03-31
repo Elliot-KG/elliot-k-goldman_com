@@ -3,6 +3,8 @@ import { Skill } from "./skill"
 import SkillsJson from "../src/skills/skills.json"
 import { SkillDictionaryType } from "../src/skills/skill.interface"
  
+//TODO: Move on smaller screen 
+
 export function SkillsBar({highlighted} : {highlighted : Array<string>}) {
 
   let noneSelected = (highlighted.length == 0)
