@@ -1,9 +1,8 @@
 import { off } from "process";
 import * as React from "react"
-import { pathObject, svgObject, wigglePath, objectToPath } from "../src/svgHelpers";
+import { svgObject, wigglePath, objectToPath } from "../src/svgHelpers";
 
 export const Mountains = () => {
-
 
 	const width = 1000
 	const height = 350
@@ -16,6 +15,10 @@ export const Mountains = () => {
 	const heightO = height - (2 * padding)
 	const xGrid = [...new Array(xGridDim + 1)].map((_, i) => (i * (widthO / xGridDim)) + padding) //creating a grid for width for easy computing chunks of mountain
 	const yGrid = [...new Array(yGridDim + 1)].map((_, i) => (i * (heightO / yGridDim)) + padding)
+	const [leftMountain, setLeftMountain] = React.useState(tallMountain(0))
+	const [middleMountain, setMiddleMountain] = React.useState(smallMountain(6))
+	const [rightMountain, setRightMountain] = React.useState(tallMountain(9))
+
 
 	//Uses grids 0 - 8
 	function tallMountain(index: number): svgObject {
@@ -76,13 +79,11 @@ export const Mountains = () => {
 				{/* Randomly generated back mountains */}
 				<g className="stroke-slate-500" >
 
-					<path d={objectToPath(tallMountain(0))} />
-					<path d={objectToPath(smallMountain(6))} />
-					<path d={objectToPath(tallMountain(9))} />
+					<path d={objectToPath(leftMountain)} />
+					<path d={objectToPath(middleMountain)} />
+					<path d={objectToPath(rightMountain)} />
 				</g>
 			</svg>
-
-
 
 			<svg className="relative z-50 linecap-round stroke-white fill-none stroke-[10px]" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
 				viewBox={"0 0 " + width + " " + height}>
