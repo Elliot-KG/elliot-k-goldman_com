@@ -16,6 +16,10 @@ export default function Home() {
         <title>Elliot K. Goldman</title>
         <meta name="description" content="The portfolio site of Elliot K. Goldman" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="image" property="og:image" content="./ElliotKGoldman.png"></meta>
+        <meta name="author" content="Elliot K. Goldman"></meta>
+        <meta property="og:description" content="The portfolio site of Elliot K. Goldman" />
+        <meta property="og:type" content="website" />
       </Head>
       <main className="font-main font-black bg-night animate-sky w-full h-full">
         <MountainRange />
