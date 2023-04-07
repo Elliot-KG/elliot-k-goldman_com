@@ -1,3 +1,4 @@
-# ElliotKGoldman.com
+# [ElliotKGoldman.com](https://ElliotKGoldman.com)
 
-## A portfolio site written in: Next.js, Typescript, Tailwind.css, and Three.js (coming soon)
+## A portfolio site written in: Next.js, React.js, Typescript, and Tailwind.css
+
